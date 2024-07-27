@@ -33,21 +33,22 @@
                           <div class="col-md-6 col-12 mx-auto">
                               <h3>Update a user</h3>
                               <hr>
-                                      <label class="form-label">Id</label>
+                                
                               <form:form method="post" action="/admin/user/update" modelAttribute="newUser">
                                   <div class="mb-3" style="display: none">
-                                      <form:input type="text" class="form-control" path="id"/>
+                                        <label class="form-label">Id</label>
+                                        <form:input type="text" class="form-control" path="id"/>
                                   </div>
                                   <div class="mb-3">
+                                    <label class="form-label">Email</label>
                                     <form:input type="email" class="form-control" disabled="true" path="email" />
-                                    <label class="form-label">Email address</label>
                                   </div>
                                   <div class="mb-3">
                                     <label class="form-label">Phone Number</label>
                                     <form:input type="text" class="form-control" path="phone" />
-                                     <label class="form-label">Full Name</label>
                                   </div>
                                   <div class="mb-3">
+                                    <label class="form-label">Full Name</label>
                                     <form:input type="text" class="form-control" path="fullName" />
                                   </div>
                                   <div class="mb-3">
