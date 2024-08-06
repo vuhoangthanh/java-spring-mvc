@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +40,7 @@
                                     <thead>
                                       <tr>
                                         <th scope="col">ID</th>
+                                        <th scope="col">Image</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Price</th>
                                         <th scope="col">Factory</th>
@@ -47,9 +50,10 @@
                                     <tbody>
                                       <c:forEach var="product" items="${products}">
                                         <tr>
-                                          <th scope="row">${product.id}</th>
+                                          <td scope="row">${product.id}</td>
+                                          <td scope="row"><img style="width:200px;" src="/images/product/${product.image}" alt=""></td>
                                           <td>${product.name}</td>
-                                          <td>${product.price}</td>
+                                          <td><fmt:formatNumber type="number" value="${product.price}"/> đ</td>
                                           <td>${product.factory}</td>
                                           <td>
                                               <a href="/admin/product/${product.id}" class="btn btn-success">View</a>

@@ -36,7 +36,7 @@ public class ProductController {
     public String getProduct(Model model) {
         List<Product> products = this.productService.getAllProducts();
         model.addAttribute("products", products);
-        return "/admin/product/show";
+        return "admin/product/show";
     }
 
     @GetMapping("/admin/product/create")
@@ -59,7 +59,7 @@ public class ProductController {
 
         // validate
         if (newProductBindingResult.hasErrors()) {
-            return "/admin/product/create";
+            return "admin/product/create";
         }
         //
 

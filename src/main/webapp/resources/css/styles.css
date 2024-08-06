@@ -311,6 +311,7 @@ svg {
 table {
   caption-side: bottom;
   border-collapse: collapse;
+ 
 }
 
 caption {
@@ -1753,7 +1754,10 @@ progress {
   color: var(--bs-table-color);
   vertical-align: top;
   border-color: var(--bs-table-border-color);
+  
 }
+
+
 .table > :not(caption) > * > *, .datatable-table > :not(caption) > * > * {
   padding: 0.5rem 0.5rem;
   background-color: var(--bs-table-bg);

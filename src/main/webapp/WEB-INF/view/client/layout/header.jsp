@@ -24,8 +24,8 @@
             <div class="collapse navbar-collapse bg-white justify-content-between mx-5" id="navbarCollapse">
                 <!-- <div class="navbar-nav mx-auto"> -->
                 <div class="navbar-nav">
-                    <a href="index.html" class="nav-item nav-link active">Trang chủ</a>
-                    <a href="shop.html" class="nav-item nav-link">Sản phẩm</a>
+                    <a href="/" class="nav-item nav-link active">Trang chủ</a>
+                    <a href="product/show" class="nav-item nav-link">Sản phẩm</a>
                     <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -41,7 +41,7 @@
                     <div class="d-flex m-3 me-0">
                         <c:if test="${not empty pageContext.request.userPrincipal}">
                         <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
-                        <a href="#" class="position-relative me-4 my-auto">
+                        <a href="/cart" class="position-relative me-4 my-auto">
                             <i class="fa fa-shopping-bag fa-2x"></i>
                             <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">${sessionScope.sum}</span>
                         </a>

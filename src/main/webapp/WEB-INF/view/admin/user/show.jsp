@@ -34,13 +34,14 @@
                                   <a href="/admin/user/create" class="btn btn-primary">Create a user</a>
                               </div>
                               <hr>
-                              <table class="table table-bordered table-hover">
+                              <table class="table table-bordered table-hover text-center">
                                   <thead>
                                     <tr>
                                       <th scope="col">id</th>
                                       <th scope="col">email</th>
                                       <th scope="col">fullName</th>
                                       <th scope="col">address</th>
+                                      <th scope="col">phone</th>
                                       <th scope="col">Action</th>
                                     </tr>
                                   </thead>
@@ -51,6 +52,7 @@
                                         <td>${user.email}</td>
                                         <td>${user.fullName}</td>
                                         <td>${user.address}</td>
+                                        <td>${user.phone}</td>
                                         <td>
                                             <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
                                             <a href="/admin/user/update/${user.id}" class="btn btn-warning mx-2">Update</a>
