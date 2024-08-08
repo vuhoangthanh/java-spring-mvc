@@ -38,29 +38,39 @@
                                 <table class="table table-bordered table-hover">
                                     <thead>
                                       <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">Total Price</th>
-                                        <th scope="col">User</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">Sản Phẩm</th>
+                                        <th scope="col">Tên</th>
+                                        <th scope="col">Giá cả</th>
+                                        <th scope="col">Số lượng</th>
+                                        <th scope="col">Thành tiền</th>
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      <c:forEach var="order" items="${orders}">
+                                        <c:if test="${ empty orderDetails}">
+                                            <tr>
+                                                <td colspan="6">
+                                                    Không có sản phẩm trong giỏ hàng
+                                                </td>
+                                            </tr>
+                                        </c:if>
+                                      <c:forEach var="orderDetail" items="${orderDetails}">
                                         <tr>
-                                          <td scope="row">${order.id}</td>
-                                          <td scope="row"><fmt:formatNumber type="number" value="${order.totalPrice}"/> đ</td>
-                                          <td>${order.user.fullName}</td>
-                                          <td>${order.status}</td>
-                                          <td>
-                                              <a href="/admin/order/${order.id}" class="btn btn-success">View</a>
-                                              <a href="/admin/order/update/${order.id}" class="btn btn-warning mx-2">Update</a>
-                                              <a href="/admin/order/delete/${order.id}" class="btn btn-danger mx-2">Delete</a>
-                                          </td>
+                                            <th scope="row">
+                                            <div class="d-flex align-items-center">
+                                                <img src="/images/product/${orderDetail.product.image}"
+                                                    class="img-fluid me-5 rounded-circle"
+                                                    style="width: 80px; height: 80px;"
+                                                    alt="">
+                                            </div>
+                                        </th>                                          <td scope="row"><a href="/admin/product/${orderDetail.product.id}">${orderDetail.product.name}</a></td>
+                                          <td><fmt:formatNumber type="number" value="${orderDetail.price}"/> đ</td>
+                                          <td>${orderDetail.quantity}</td>
+                                          <td><fmt:formatNumber type="number" value="${order.totalPrice}"/> đ</td>
                                         </tr>
                                       </c:forEach>
                                     </tbody>
                                   </table>
+                                  <a href="/admin/order" class="btn btn-primary">Back</a>
                             </div>
                         </div>
                     </div>

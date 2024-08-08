@@ -59,6 +59,17 @@
                                     </ol>
                                 </nav>
                             </div>
+                                <c:if test="${ empty cartDetails}">
+                                    <div class="p-5 border bg-light rounded">
+                                        <h2 >Không có sản phẩm trong giỏ hàng</h2>
+                                        <!-- <img style="width: 30%;" src="images\other\empty-cart.png" alt=""> -->
+                                        Cùng mua sắm tại LaptopShop nhé!
+                                        <br>
+                                        <a href="/" class="btn border-secondary rounded-pill px-3 py-2 text-primary text-uppercase mt-3 ">Mua ngay</a>
+                                        
+                                    </div>
+                                </c:if>
+                        <c:if test="${not empty cartDetails}">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -72,13 +83,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:if test="${ empty cartDetails}">
-                                            <tr>
-                                                <td colspan="6">
-                                                    Không có sản phẩm trong giỏ hàng
-                                                </td>
-                                            </tr>
-                                        </c:if>
+                                        
                                         <c:forEach var="cartDetail" items="${cartDetails}" varStatus="status">
 
                                             <tr>
@@ -144,6 +149,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </c:if>
                             <c:if test="${not empty cartDetails}">
                                 <div class="mt-5 row g-4 justify-content-start">
                                     <div class="col-12 col-md-8">

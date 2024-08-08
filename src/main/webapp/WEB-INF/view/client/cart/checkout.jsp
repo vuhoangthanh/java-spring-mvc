@@ -59,7 +59,14 @@
                                     </ol>
                                 </nav>
                             </div>
-
+                            <c:if test="${ empty cartDetails}">
+                                <tr>
+                                    <td colspan="6">
+                                        Không có sản phẩm trong giỏ hàng
+                                    </td>
+                                </tr>
+                            </c:if>
+                            <c:if test="${not empty cartDetails}">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -72,13 +79,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:if test="${ empty cartDetails}">
-                                            <tr>
-                                                <td colspan="6">
-                                                    Không có sản phẩm trong giỏ hàng
-                                                </td>
-                                            </tr>
-                                        </c:if>
                                         <c:forEach var="cartDetail" items="${cartDetails}">
 
                                             <tr>
@@ -120,6 +120,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                        </c:if>
                             <c:if test="${not empty cartDetails}">
                                 <form:form action="/place-order" method="post" modelAttribute="cart">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
