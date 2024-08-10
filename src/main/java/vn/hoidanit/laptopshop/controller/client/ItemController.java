@@ -17,9 +17,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import vn.hoidanit.laptopshop.domain.Cart;
 import vn.hoidanit.laptopshop.domain.CartDetail;
+import vn.hoidanit.laptopshop.domain.Order;
+import vn.hoidanit.laptopshop.domain.OrderDetail;
 import vn.hoidanit.laptopshop.domain.Product;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.domain.dto.SearchDTO;
+import vn.hoidanit.laptopshop.service.OrderService;
 import vn.hoidanit.laptopshop.service.ProductService;
 
 @Controller
@@ -45,7 +48,7 @@ public class ItemController {
         long productId = id;
         String email = (String) session.getAttribute("email");
 
-        this.productService.handleAddProductToCart(email, productId, session);
+        this.productService.handleAddProductToCart(email, productId, session, 1);
 
         return "redirect:/";
     }
@@ -151,6 +154,21 @@ public class ItemController {
         // Product product =
         // this.productService.findByNameOrShortDescOrFactoryOrPriceOrSoldOrTarget();
         return "redirect:";
+    }
+
+    @PostMapping("/add-product-to-from-view-detail")
+    public String handleAddProductFromViewDetail(
+            @RequestParam("id") long id,
+            @RequestParam("quantity") long quantity,
+            HttpServletRequest request) {
+
+        HttpSession session = request.getSession(false);
+
+        String email = (String) session.getAttribute("email");
+
+        this.productService.handleAddProductToCart(email, id, session, quantity);
+
+        return "redirect:/product/" + id;
     }
 
 }
