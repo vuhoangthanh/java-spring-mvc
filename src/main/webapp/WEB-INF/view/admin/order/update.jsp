@@ -14,14 +14,43 @@
                     <meta name="author" content="Hỏi Dân IT" />
                     <title>Update Order - Hỏi Dân IT</title>
                     <link href="/css/styles.css" rel="stylesheet" />
-
+                    <link rel="stylesheet"
+                        href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
                     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
                         crossorigin="anonymous"></script>
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+                    <style>
+                        .form-container {
+                            background-color: #ffffff;
+                            /* Nền trắng cho khung */
+                            border-radius: 10px;
+                            /* Bo tròn góc */
+                            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                            /* Đổ bóng nhẹ */
+                            padding: 20px;
+                            /* Khoảng cách bên trong */
+                        }
 
+                        .form-label {
+                            font-weight: bold;
+                            /* Chữ đậm cho nhãn */
+                        }
 
+                        .btn-update {
+                            background-color: #ffc107;
+                            /* Màu nền cho nút */
+                            border: none;
+                            /* Xóa viền */
+                            transition: background-color 0.3s;
+                            /* Hiệu ứng chuyển màu */
+                        }
+
+                        .btn-update:hover {
+                            background-color: #e0a800;
+                            /* Màu khi di chuột qua */
+                        }
+                    </style>
                 </head>
-
 
                 <body class="sb-nav-fixed">
                     <jsp:include page="../layout/header.jsp" />
@@ -36,26 +65,24 @@
                                         <li class="breadcrumb-item"><a href="/admin/order">Order</a></li>
                                         <li class="breadcrumb-item active">Update</li>
                                     </ol>
-                                    <div class=" mt-5">
+                                    <div class="mt-5">
                                         <div class="row">
-                                            <div class="col-md-6 col-12 mx-auto">
-                                                <h3>Update a order</h3>
+                                            <div class="col-md-8 mx-auto form-container">
+                                                <h3 class="mb-4">Update Order</h3>
                                                 <hr />
                                                 <form:form method="post" action="/admin/order/update" class="row"
                                                     modelAttribute="newOrder">
-
-
                                                     <div class="mb-3" style="display: none;">
                                                         <label class="form-label">Id:</label>
                                                         <form:input type="text" class="form-control" path="id" />
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label>Order id = ${newOrder.id} </label>
-                                                        &nbsp; &nbsp; &nbsp; &nbsp;
-                                                        <label class="form-label">Price:
-                                                            <fmt:formatNumber type="number"
-                                                                value="${newOrder.totalPrice}" /> đ
-                                                        </label>
+                                                        <label class="form-label">Order ID:
+                                                            <strong>${newOrder.id}</strong></label>
+                                                        <label class="form-label">Price: <strong>
+                                                                <fmt:formatNumber type="number"
+                                                                    value="${newOrder.totalPrice}" /> đ
+                                                            </strong></label>
                                                     </div>
 
                                                     <div class="mb-3 col-12 col-md-6">
@@ -74,14 +101,11 @@
                                                         </form:select>
                                                     </div>
                                                     <div class="col-12 mb-5">
-                                                        <button type="submit" class="btn btn-warning">Update</button>
+                                                        <button type="submit" class="btn btn-update">Update</button>
                                                     </div>
                                                 </form:form>
-
                                             </div>
-
                                         </div>
-
                                     </div>
                                 </div>
                             </main>
@@ -91,7 +115,6 @@
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
                         crossorigin="anonymous"></script>
                     <script src="/js/scripts.js"></script>
-
                 </body>
 
                 </html>

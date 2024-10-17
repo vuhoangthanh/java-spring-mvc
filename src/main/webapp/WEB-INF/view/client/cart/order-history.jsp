@@ -58,7 +58,7 @@
                                 </ol>
                             </nav>
                         </div>
-                        <c:if test="${empty order}">
+                        <c:if test="${empty orders}">
                             <div class="p-5 border bg-light rounded">
                                 <h2 >Không có đơn hàng nào được tạo</h2>
                                 <!-- <img style="width: 30%;" src="images\other\empty-cart.png" alt=""> -->
@@ -68,7 +68,7 @@
                                 
                             </div>
                         </c:if>
-                        <c:if test="${not empty order}">
+                        <c:if test="${not empty orders}">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -83,7 +83,7 @@
                                 </thead>
                                 <tbody>
                                     
-                                    <c:forEach var="order" items="${order}">
+                                    <c:forEach var="order" items="${orders}">
                                         <tr>
                                             <td colspan="2">Order Id = ${order.id}</td>
                                             <td colspan="1">

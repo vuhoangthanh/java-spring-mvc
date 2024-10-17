@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +19,6 @@ import vn.hoidanit.laptopshop.service.ProductService;
 import vn.hoidanit.laptopshop.service.UploadService;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,7 +34,12 @@ public class ProductController {
     }
 
     @GetMapping("/admin/product")
-    public String getProduct(Model model, @RequestParam("page") int page) {
+    public String getProduct(Model model, @RequestParam(value = "page", required = false) Integer page) {
+
+        if (page == null || page < 1) {
+            page = 1; // Gán giá trị mặc định là 1 nếu không có hoặc giá trị không hợp lệ
+        }
+
         Pageable pageable = PageRequest.of(page - 1, 2);
 
         Page<Product> products = this.productService.getAllProducts(pageable);
@@ -79,9 +82,10 @@ public class ProductController {
     }
 
     @GetMapping("/admin/product/{id}")
-    public String getProductDetailPage(Model model, @PathVariable long id) {
+    public String getProductDetailPage(Model model, @PathVariable long id, @RequestParam("page") int page) {
         Product product = productService.getProductById(id).get();
         model.addAttribute("product", product);
+        model.addAttribute("page", page);
         return "admin/product/detail";
     }
 
